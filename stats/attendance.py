@@ -1,9 +1,13 @@
+import warnings
 import pandas as pd
 import matplotlib.pyplot as plt
-from stats.data import games
+from data import games
+
+warnings.filterwarnings('ignore')
 
 attendance = games.loc[(games['type'] == 'info') & (games['multi2'] == 'attendance'), ['year', 'multi3']]
 attendance.columns = ['year', 'attendance']
+
 attendance.loc[:, 'attendance'] = pd.to_numeric(attendance.loc[:, 'attendance'])
 
 # Create bar chart
